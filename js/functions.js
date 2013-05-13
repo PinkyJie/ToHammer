@@ -65,7 +65,8 @@ function startHeartAnimation() {
         }
     },
     c)
-} (function(a) {
+}
+(function(a) {
     a.fn.typewriter = function() {
         this.each(function() {
             var d = a(this),
