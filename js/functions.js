@@ -25,13 +25,7 @@ $(function() {
     },
     Garden.options.growSpeed)
 });
-$(window).resize(function() {
-    var b = $(window).width();
-    var a = $(window).height();
-    if (b != clientWidth && a != clientHeight) {
-        location.replace(location)
-    }
-});
+
 function getHeartPoint(c) {
     var b = c / Math.PI;
     var a = 19.5 * (16 * Math.pow(Math.sin(b), 3));
@@ -39,7 +33,7 @@ function getHeartPoint(c) {
     return new Array(offsetX + a, offsetY + d)
 }
 function startHeartAnimation() {
-    var c = 50;
+    var c = 100;
     var d = 10;
     var b = new Array();
     var a = setInterval(function() {
@@ -85,42 +79,13 @@ function startHeartAnimation() {
                     clearInterval(e)
                 }
             },
-            75)
+            200)
         });
         return this
     }
 })(jQuery);
-function timeElapse(c) {
-    var e = Date();
-    var f = (Date.parse(e) - Date.parse(c)) / 1000;
-    var g = Math.floor(f / (3600 * 24));
-    f = f % (3600 * 24);
-    var b = Math.floor(f / 3600);
-    if (b < 10) {
-        b = "0" + b
-    }
-    f = f % 3600;
-    var d = Math.floor(f / 60);
-    if (d < 10) {
-        d = "0" + d
-    }
-    f = f % 60;
-    if (f < 10) {
-        f = "0" + f
-    }
-    var a = '<span class="digit">' + g + '</span> days <span class="digit">' + b + '</span> hours <span class="digit">' + d + '</span> minutes <span class="digit">' + f + "</span> seconds";
-    $("#elapseClock").html(a)
-}
 function showMessages() {
-    $("#messages").fadeIn(5000,
-    function() {
-        showLoveU()
-    })
-}
-function adjustWordsPosition() {
-    $("#words").css("position", "absolute");
-    $("#words").css("top", $("#garden").position().top + 195);
-    $("#words").css("left", $("#garden").position().left + 70)
+    showLoveU()
 }
 function adjustCodePosition() {
     $("#code").css("margin-top", ($("#garden").height() - $("#code").height()) / 2)
