@@ -1,14 +1,8 @@
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Our Love Story</title>
+	<title>To Hammer</title>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-	<style type="text/css">
-		@font-face {
-			font-family: digit;
-			src: url('digital-7_mono.ttf') format("truetype");
-		}
-	</style>
 	<link href="css/default.css" type="text/css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/garden.js"></script>
@@ -16,8 +10,8 @@
 </head>
 
 <body>
-	<audio src="wheniwasyoung.mp3" autoplay="autoplay"></audio>
-	<!-- <audio src="quanshijie.mp3" autoplay="autoplay"></audio> -->
+	<audio id="s1" src="res/wheniwasyoung.m4a" autoplay="autoplay"></audio>
+	<audio id="s2" src="res/quanshijie.mp3" preload="auto"></audio>
 	<div id="mainDiv">
 		<div id="content">
 			<div id="code">
@@ -28,13 +22,13 @@
 				<span class="note">也许自己也没有觉察到：爱的情愫已经开始发酵</span>
 				<br /><br />
 				<span class="date">2012-03-17</span>
-				<span class="note">* 小心翼翼给你画表白图画</span><br />
+				<span class="note">* 小心翼翼给你画表白拼图</span><br />
 				<span class="note">也许幸福在那一刻就打上了星星记号</span>
 				<br /><br />
 				<span class="note">* 你像一个孤傲的女神，让人不敢靠近</span><br />
 				<span class="note">我只能找各种理由送你东西，将你围绕</span>
 				<br /><br />
-				<span class="note">* 一厢情愿曾经让我非常烦恼</span><br />
+				<span class="note">* 一厢情愿曾让我非常烦恼</span><br />
 				<span class="note">其实只要你一个微笑，我就连做梦也会笑</span>
 				<br /><br />
 				<span class="note">* 也许你不知道</span><br />
@@ -49,8 +43,8 @@
 				<span class="note">我想这些都是我们幸福的写照</span>
 				<br /><br />
 				<span class="date">2013-05-20</span><br />
-				<span class="note">* 今天是520</span><br />
-				<span class="note">小翠，我爱你，嫁给我吧！</span>
+				<span class="marriage">* 今天是520</span><br />
+				<span class="marriage">小翠，我爱你，嫁给我吧！</span>
 			</div>
 			<div id="loveHeart">
 				<canvas id="garden"></canvas>
@@ -67,6 +61,15 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		s1 = document.getElementById("s1");
+		s1.addEventListener("timeupdate", function(){
+			s2 = document.getElementById("s2");
+			if (s1.currentTime >= s1.duration) {
+				s1.pause();
+				s2.play();
+			}
+		}, true);
+
 		var offsetX = $("#loveHeart").width() / 2;
 		var offsetY = $("#loveHeart").height() / 2 - 55;
 		
@@ -80,12 +83,12 @@
 			$("#copyright").css("bottom", "10px");
 		    document.execCommand("stop");
 		} else {
+			adjustCodePosition();
 			setTimeout(function() {
 				startHeartAnimation();
-			}, 1000);
-
-			adjustCodePosition();
-			$("#code").typewriter();
+				$("#code").show();
+				$("#code").typewriter();
+			}, 9000);
 		}
 	</script>
 </body>
