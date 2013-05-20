@@ -1,4 +1,4 @@
 ## ToHammer
 
-- forked from http://love.hackerzhou.me'
+- forked from http://love.hackerzhou.me
 - for my marriage proposal
